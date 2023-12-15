@@ -40,5 +40,3 @@ async def home():
 
 #models.PANEL.mount_to(app)
 
-if __name__ == "__main__":
-    uvicorn.run(app, host=HOST, port=PORT,)
