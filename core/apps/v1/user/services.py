@@ -19,7 +19,7 @@ def get_by_email(email:str, db: Session) -> schemas.UserRead:
         raise ObjectDoesNotExist()
     return user_db
 
-def update(id:int, user:schemas.UserUpdate, db: Session) -> schemas.UserRead | None:
+def update(id:int, user:schemas.UserUpdate, db: Session) -> schemas.UserRead:
     user_db=get(id=id,db=db)
     if user_db is None:
         raise ObjectDoesNotExist()
@@ -31,7 +31,7 @@ def update(id:int, user:schemas.UserUpdate, db: Session) -> schemas.UserRead | N
     db.refresh(user_db)
     return user_db
 
-def delete(id:int, db: Session) -> schemas.UserRead | None:
+def delete(id:int, db: Session) -> schemas.UserRead:
     user_db=get(id=id,db=db)
     if user_db is None:
         raise ObjectDoesNotExist()

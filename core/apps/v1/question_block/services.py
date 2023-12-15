@@ -31,7 +31,7 @@ def get_all_by_component_random(component:str, db: Session, n:int) -> list[schem
     weights=[len(qb.questions) for qb in question_blocks]#get the number of questions of each question block
     return Alghoritms.knapsack(list=question_blocks, weights=weights, goal=n)
 
-def update(id:int, question_block:schemas.QuestionBlockUpdate, db: Session) -> schemas.QuestionBlockRead | None:
+def update(id:int, question_block:schemas.QuestionBlockUpdate, db: Session) -> schemas.QuestionBlockRead:
     question_bl_db=get(id=id,db=db)
     if question_bl_db is None:
         raise ObjectDoesNotExist()
@@ -43,7 +43,7 @@ def update(id:int, question_block:schemas.QuestionBlockUpdate, db: Session) -> s
     db.refresh(question_bl_db)
     return question_bl_db
 
-def delete(id:int, db: Session) -> schemas.QuestionBlockRead | None:
+def delete(id:int, db: Session) -> schemas.QuestionBlockRead:
     question_bl_db=get(id=id,db=db)
     if question_bl_db is None:
         raise ObjectDoesNotExist()

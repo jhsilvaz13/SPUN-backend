@@ -32,7 +32,7 @@ def get(id:int, db: Session) -> schemas.QuestionRead | None:
         raise ObjectDoesNotExist()
     return question_db
 
-def update(id:int, question:schemas.QuestionUpdate, db: Session) -> schemas.QuestionRead | None:
+def update(id:int, question:schemas.QuestionUpdate, db: Session) -> schemas.QuestionRead:
     question_db=get(id=id,db=db)
     if question_db is None:
         raise ObjectDoesNotExist()
@@ -44,7 +44,7 @@ def update(id:int, question:schemas.QuestionUpdate, db: Session) -> schemas.Ques
     db.refresh(question_db)
     return question_db
 
-def delete(id:int, db: Session) -> schemas.QuestionRead | None:
+def delete(id:int, db: Session) -> schemas.QuestionRead:
     question_db=get(id=id,db=db)
     if question_db is None:
         raise ObjectDoesNotExist()
