@@ -26,7 +26,7 @@ def create(question:schemas.QuestionCreate, db: Session) -> schemas.QuestionRead
 def get_all(db: Session) -> list[schemas.QuestionRead]:
     return db.query(Question).all()
 
-def get(id:int, db: Session) -> schemas.QuestionRead | None:
+def get(id:int, db: Session) -> schemas.QuestionRead:
     question_db=db.query(Question).filter(Question.id==id).first()
     if question_db is None:
         raise ObjectDoesNotExist()
